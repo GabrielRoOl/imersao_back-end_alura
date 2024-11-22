@@ -1,0 +1,5 @@
+import getAll from "../models/postModel";
+export async function listPost(req, res) {
+  const posts = await getAll();
+  res.status(200).json(posts);
+}
