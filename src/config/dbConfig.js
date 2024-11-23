@@ -1,7 +1,18 @@
+import dotenv from "dotenv";
+dotenv.config();
 import { MongoClient } from "mongodb";
 
+let mongoClient = null;
+
 export default async function conectarAoBanco(stringConexao) {
-  let mongoClient;
+  if (mongoClient) {
+    console.log("Conexão já existente. Reutilizando...");
+    return mongoClient;
+  }
+
+  if (!stringConexao) {
+    throw new Error("A string de conexão não foi fornecida!");
+  }
 
   try {
     mongoClient = new MongoClient(stringConexao);
@@ -12,6 +23,6 @@ export default async function conectarAoBanco(stringConexao) {
     return mongoClient;
   } catch (erro) {
     console.error("Falha na conexão com o banco!", erro);
-    process.exit();
+    process.exit(1);
   }
 }
