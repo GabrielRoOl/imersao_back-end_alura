@@ -1,3 +1,3 @@
-gcloud services enoble run.googleapis.com
-gcloud services enoble cloudbuild.googleapis.com
-gcloud services enoble artifactregistry.googleapis.com
+gcloud services enable run.googleapis.com
+gcloud services enable cloudbuild.googleapis.com
+gcloud services enable artifactregistry.googleapis.com
